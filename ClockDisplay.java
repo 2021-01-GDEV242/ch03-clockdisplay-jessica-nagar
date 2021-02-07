@@ -49,7 +49,15 @@ public class ClockDisplay
     {
         minutes.increment();
         if(minutes.getValue() == 0) {  // it just rolled over!
-            hours.increment();
+            if(hours.getValue() == 12)
+            {
+                hours.increment();
+                hours.increment();
+            }
+            else
+            {
+                hours.increment();
+            }
         }
         updateDisplay();
     }
