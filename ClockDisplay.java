@@ -16,6 +16,7 @@ public class ClockDisplay
 {
     private NumberDisplay hours;
     private NumberDisplay minutes;
+    private String amPm;
     private String displayString;    // simulates the actual display
     
     /**
@@ -34,10 +35,11 @@ public class ClockDisplay
      * creates a new clock set at the time specified by the 
      * parameters.
      */
-    public ClockDisplay(int hour, int minute)
+    public ClockDisplay(int hour, int minute, String am_pm)
     {
         hours = new NumberDisplay(24);
         minutes = new NumberDisplay(60);
+        amPm = am_pm;
         setTime(hour, minute);
     }
 
@@ -58,10 +60,11 @@ public class ClockDisplay
      * Set the time of the display to the specified hour and
      * minute.
      */
-    public void setTime(int hour, int minute)
+    public void setTime(int hour, int minute, String am_pm)
     {
         hours.setValue(hour);
         minutes.setValue(minute);
+        amPm = am_pm;
         updateDisplay();
     }
 
@@ -79,6 +82,6 @@ public class ClockDisplay
     private void updateDisplay()
     {
         displayString = hours.getDisplayValue() + ":" + 
-                        minutes.getDisplayValue();
+                        minutes.getDisplayValue() + " " + amPm;
     }
 }
