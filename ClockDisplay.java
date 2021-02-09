@@ -40,7 +40,7 @@ public class ClockDisplay
         hours = new NumberDisplay(13);
         minutes = new NumberDisplay(60);
         amPm = am_pm;
-        setTime(hour, minute);
+        setTime(hour, minute, am_pm);
     }
 
     /**
@@ -72,10 +72,11 @@ public class ClockDisplay
      * Set the time of the display to the specified hour and
      * minute.
      */
-    public void setTime(int hour, int minute)
+    public void setTime(int hour, int minute, String am_pm)
     {
         hours.setValue(hour);
         minutes.setValue(minute);
+        amPm = am_pm;
         updateDisplay();
     }
 
