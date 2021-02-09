@@ -17,6 +17,7 @@ public class ClockDisplay
     private NumberDisplay hours;
     private NumberDisplay minutes;
     private String amPm;
+    private int displayHours;
     private String displayString;    // simulates the actual display
     
     /**
@@ -37,10 +38,10 @@ public class ClockDisplay
      */
     public ClockDisplay(int hour, int minute, String am_pm)
     {
-        hours = new NumberDisplay(24);
+        hours = new NumberDisplay(25);
         minutes = new NumberDisplay(60);
         amPm = am_pm;
-        setTime(hour, minute);
+        setTime(hour, minute, am_pm);
     }
 
     /**
@@ -52,6 +53,12 @@ public class ClockDisplay
         minutes.increment();
         if(minutes.getValue() == 0) {  // it just rolled over!
             hours.increment();
+            if(hours.getValue() >= 13)
+                amPm = "pm";
+            else
+                amPm = "am";
+            
+           
         }
         updateDisplay();
     }
@@ -81,7 +88,85 @@ public class ClockDisplay
      */
     private void updateDisplay()
     {
-        displayString = hours.getDisplayValue() + ":" + 
+        switch(hours.getValue())
+        {
+            case 1:
+                displayHours = 1;
+                break;
+            case 2:
+                displayHours = 2;
+                break;
+            case 3:
+                displayHours = 3;
+                break;
+            case 4:
+                displayHours = 4;
+                break;
+            case 5:
+                displayHours = 5;
+                break;
+            case 6:
+                displayHours = 6;
+                break;
+            case 7:
+                displayHours = 7;
+                break;
+            case 8:
+                displayHours = 8;
+                break;
+            case 9:
+                displayHours = 9;
+                break;
+            case 10:
+                displayHours = 10;
+                break;
+            case 11:
+                displayHours = 11;
+                break;
+            case 12:
+                displayHours = 12;
+                break;
+            case 13:
+                displayHours = 1;
+                break;
+            case 14:
+                displayHours = 2;
+                break;
+            case 15:
+                displayHours = 3;
+                break;
+            case 16:
+                displayHours = 4;
+                break;
+            case 17:
+                displayHours = 5;
+                break;
+            case 18:
+                displayHours = 6;
+                break;
+            case 19:
+                displayHours = 7;
+                break;
+            case 20:
+                displayHours = 8;
+                break;
+            case 21:
+                displayHours = 9;
+                break;
+            case 22:
+                displayHours = 10;
+                break;
+            case 23:
+                displayHours = 11;
+                break;
+            case 24:
+                displayHours = 12;
+                break;
+            default:
+                displayHours = 0;
+        }
+        
+        displayString = displayHours + ":" + 
                         minutes.getDisplayValue() + " " + amPm;
     }
 }
