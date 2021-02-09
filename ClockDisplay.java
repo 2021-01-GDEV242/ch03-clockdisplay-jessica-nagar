@@ -58,7 +58,18 @@ public class ClockDisplay
             else
                 amPm = "am";
             
-           
+            if(hours.getValue() == 0)
+            {
+                hours.increment();
+            }
+            else if(hours.getValue() > 0)
+            {
+                System.out.println();
+            }
+            else
+            {
+                System.out.println("error");
+            }
         }
         updateDisplay();
     }
